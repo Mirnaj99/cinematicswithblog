@@ -1,0 +1,11 @@
+.homeblog{
+    display: flex;
+}
+
+.filter{
+    margin: 15px 50px;
+    font-family: 'Lora', serif;
+    color: #444;
+    text-transform: capitalize;
+}
+
