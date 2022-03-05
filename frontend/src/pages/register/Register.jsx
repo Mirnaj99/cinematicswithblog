@@ -46,7 +46,7 @@ const Register = () => {
           </div>
           <div className="right">
           <Link to="/login">
-            <button className="loginButton">Sign In</button>
+            <button className="loginButton button">Sign In</button>
           </Link>
           </div>
       </div>
@@ -61,7 +61,7 @@ const Register = () => {
         {!email ? (
           <div className="input">
             <input type="email" placeholder="Email Address" ref={emailRef} />
-            <button className="registerButton" onClick={startHandler}>
+            <button className="registerButton button" onClick={startHandler}>
               Get Started
             </button>
           </div>
@@ -69,7 +69,7 @@ const Register = () => {
           <form className="input">
             <input type="username" placeholder="Username" ref={userNameRef} />
             <input type="password" className="pass" placeholder="Password" ref={passwordRef} />
-            <button className="registerButton" onClick={finishHandler}>
+            <button className="registerButton button" onClick={finishHandler}>
               Start
             </button>
           </form>

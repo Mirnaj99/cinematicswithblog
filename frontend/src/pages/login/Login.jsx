@@ -50,7 +50,7 @@ const Login = () => {
             placeholder="Password"
             onChange={passwordChangeHandler}
           />
-          <button className="loginButton" onClick={loginHandler}>
+          <button className="loginButton button" onClick={loginHandler}>
             Sign In
           </button>
          <span>

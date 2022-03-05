@@ -27,8 +27,12 @@
       }
     }
     .right {
-      margin-left: 60%;
+      display: flex;
+      flex: 12;
+      justify-content: flex-end;
+      align-items: flex-end;
       .loginButton {
+        margin-right: 10px;
         background-color: red;
         border: none;
         color: rgba(255, 255, 255, 0.952);
