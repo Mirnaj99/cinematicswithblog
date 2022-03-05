@@ -43,10 +43,10 @@
 }
 
 .singlePostIcon:first-child {
-  color: #084476;
+  color: #444;
 }
 .singlePostIcon:last-child {
-  color: tomato;
+  color: red;
 }
 .singlePostInfo {
   display: flex;
@@ -86,7 +86,7 @@
   .singlePostButton {
     width: 100px;
     border: none;
-    background-color: #084476;
+    background-color: red;
     padding: 5px;
     color: white;
     border-radius: 5px;

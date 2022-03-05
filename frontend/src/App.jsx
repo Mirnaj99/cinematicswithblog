@@ -43,8 +43,9 @@ const App = () => {
           </>
         )}
       </Routes>
-      <TopBar/>
+     
       <Routes>
+      
         <Route path="/blog" element={<Blog />} />
         <Route path="/posts" element={<Blog />} />
         <Route path="/post/:id" element={<Single />} />

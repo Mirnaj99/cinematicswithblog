@@ -39,7 +39,7 @@ export default function SideBar() {
     return uniquecateg.map((data) => {
       return (
         <li key={data._id} className="sidebarListItem">
-          <Link to={`/?cat=${data.category}`} className="link">
+          <Link to={`/blog/?cat=${data.category}`} className="link">
             {data.category}
           </Link>
         </li>

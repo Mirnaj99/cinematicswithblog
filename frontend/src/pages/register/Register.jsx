@@ -34,10 +34,7 @@ const Register = () => {
       setFailure(true)
       if (err.response.status === 400) {
         setErrorMessage(err.response.data.message);
-      } else if (err.response.status === 500) {
-        setErrorMessage("Please Fill All The Fields");
       }
-
       console.log(err);
     }
   };
@@ -46,10 +43,12 @@ const Register = () => {
       <div className="top">
         <div className="wrapper">
           <img className="logo" src={logo} alt="logo" />
+          </div>
+          <div className="right">
           <Link to="/login">
-            <button className="loginButton">Sign In</button>
+            <button className="loginButton button">Sign In</button>
           </Link>
-        </div>
+          </div>
       </div>
 
       <div className="container">
@@ -62,15 +61,15 @@ const Register = () => {
         {!email ? (
           <div className="input">
             <input type="email" placeholder="Email Address" ref={emailRef} />
-            <button className="registerButton" onClick={startHandler}>
+            <button className="registerButton button" onClick={startHandler}>
               Get Started
             </button>
           </div>
         ) : (
           <form className="input">
             <input type="username" placeholder="Username" ref={userNameRef} />
-            <input type="password" placeholder="Password" ref={passwordRef} />
-            <button className="registerButton" onClick={finishHandler}>
+            <input type="password" className="pass" placeholder="Password" ref={passwordRef} />
+            <button className="registerButton button" onClick={finishHandler}>
               Start
             </button>
           </form>

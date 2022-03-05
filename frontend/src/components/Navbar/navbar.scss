@@ -3,7 +3,7 @@
 .navbar {
   width: 100%;
   color: white;
-  font-size: 14px;
+  font-size: 17px;
   position: fixed;
   top: 0;
   z-index: 999;
@@ -51,7 +51,7 @@
     img {
       width: 30px;
       height: 30px;
-      border-radius: 5px;
+      border-radius: 10px;
       object-fit: cover;
       cursor: pointer;
     }
@@ -63,7 +63,7 @@
         border-radius: 5px;
       }
       span {
-        padding: 10px;
+        padding:10px;
         cursor: pointer;
       }
 

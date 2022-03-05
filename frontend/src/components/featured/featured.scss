@@ -30,17 +30,21 @@
   .info {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 28%;
     position: absolute;
     left: 50px;
     bottom: 100px;
     color: white;
-
+    
     img {
-      width: 400px;
+      width: 350px;
+      border-radius: 5px;
     }
 
     .desc {
+     
+      
+      font-weight: 500;
       margin: 20px 0px;
     }
 

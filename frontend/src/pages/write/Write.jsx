@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "./write.css";
 import axios from "axios";
 import { AuthContext } from "../../authContext/AuthContext";
+import TopBar from "../../components/topbar/TopBar";
 
 export default function Write() {
   const [title, setTitle] = useState("");
@@ -44,6 +45,8 @@ export default function Write() {
     } catch (err) {}
   };
   return (
+    <>
+    <TopBar />
     <div className="write">
       {file && (
         <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
@@ -93,5 +96,6 @@ export default function Write() {
         </button>
       </form>
     </div>
+    </>
   );
 }

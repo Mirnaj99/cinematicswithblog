@@ -5,6 +5,7 @@ import "./homepage.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import TopBar from "../../components/topbar/TopBar";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -12,9 +13,9 @@ export default function Blog() {
 
   const filter = search.split("=")[1];
 
-  if (search.split("=")[0] == "?cat") {
+  if (search.split("=")[0] === "?cat") {
     var filterName = "Category:";
-  } else if (search.split("=")[0] == "?user") {
+  } else if (search.split("=")[0] === "?user") {
     var filterName = "Author:";
   }
 
@@ -34,6 +35,7 @@ export default function Blog() {
 
   return (
     <>
+    <TopBar />
       <Header />
       <h1 className="filter">
         {filterName} {filter}
