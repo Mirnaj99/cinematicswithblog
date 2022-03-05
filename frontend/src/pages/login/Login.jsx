@@ -3,6 +3,7 @@ import "./login.scss";
 import logo from "../../components/Navbar/logo.jpg";
 import login from "../../authContext/ApiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -52,8 +53,8 @@ const Login = () => {
           <button className="loginButton" onClick={loginHandler}>
             Sign In
           </button>
-          <span>
-            New to Netflix <b> Sign Up Now </b>
+         <span>
+            New to Netflix  <Link to="/register" className="link"><b> Sign Up Now  </b></Link> 
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a

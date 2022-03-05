@@ -3,6 +3,7 @@ import "./settings.css";
 import {  useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../authContext/AuthContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 export default function Settings() {
@@ -20,8 +21,7 @@ export default function Settings() {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
     const updatedUser = {
-      userId: user._id,
-      username,
+    
       email,
       password,
     };
@@ -42,9 +42,15 @@ export default function Settings() {
     }
     try {
       
-    const res =  await  axios.put("/users/" + user._id, updatedUser);
-      setSuccess(true);
+    const res =  await  axios.put("/users/" + user._id, updatedUser, {
+      headers: {
+        token:
+          "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
+      setSuccess(true);
+
     } catch (err) {
       dispatch({ type: "UPDATE_FAILURE" });
     }
@@ -53,8 +59,10 @@ export default function Settings() {
   const handleDelete = async () => {
     try {
       await axios.delete("/users/" + user._id, {
-        data: { userId: user._id },
-       
+        headers: {
+          token:
+            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+        },
       });
       dispatch({ type: "LOGOUT" });
       
@@ -62,9 +70,20 @@ export default function Settings() {
   };
 
   return (
+    
+   
     <div className="settings">
+    <ul className="topListset">
+      <li className="topListItemset">
+            <Link  to="/">
+            <i class="topIconset backset fa-solid fa-angles-left link"></i>
+            </Link>
+          </li>
+          </ul>
       <div className="settingsWrapper">
+     
         <div className="settingsTitle">
+     
           <span className="settingsUpdateTitle" >Update Your Account</span>
           <span className="settingsDeleteTitle" onClick={handleDelete}>Delete Account</span>
         </div>
@@ -99,7 +118,8 @@ export default function Settings() {
           )}
         </form>
       </div>
-      <SideBar />
+     
     </div>
+    
   );
 }

@@ -23,7 +23,7 @@ mongoose
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // cb is callback
-    cb(null, "../../"); // images is the destination
+    cb(null, "../../"); //            ../../ is the destination
   },
   filename: (req, file, cb) => {
     //giving a name for the file

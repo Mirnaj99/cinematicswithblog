@@ -6,7 +6,7 @@ const verify = require("../verifyToken");
 //CREATE POST
 router.post("/", verify, async (req, res) => {
   const newPost = new Post(req.body);
-  if (req.user.id === req.params.id || req.user.isAdmin)
+ 
     try {
       const savedPost = await newPost.save();
       res.status(200).json(savedPost);
@@ -60,8 +60,8 @@ router.delete("/:id", verify, async (req, res) => {
 });
 
 //GET POST
-router.get("/:id", verify, async (req, res) => {
-  if (req.user.id === req.params.id || req.user.isAdmin)
+router.get("/:id", async (req, res) => {
+ 
     try {
       const post = await Post.findById(req.params.id);
       res.status(200).json(post);
@@ -71,7 +71,7 @@ router.get("/:id", verify, async (req, res) => {
 });
 
 //GET ALL POSTS
-router.get("/", verify, async (req, res) => {
+router.get("/", async (req, res) => {
   //    /api/posts?user=mhmd     /api/posts?cat=life
   const username = req.query.user;
   const catName = req.query.cat;
