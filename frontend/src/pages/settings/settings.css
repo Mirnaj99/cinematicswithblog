@@ -109,3 +109,6 @@
 .backset{
   margin: 15px 0px;
 }
+.username{
+  text-transform: capitalize;
+}
