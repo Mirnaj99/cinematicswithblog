@@ -50,18 +50,31 @@ export default function CreateNewList() {
 
           <div className="addProductItem">
             <label>Genre</label>
-            <input
-              type="text"
-              placeholder="action"
-              name="genre"
-              onChange={changeHandler}
-            />
+            <select name="genre" id="genre" onChange={changeHandler}>
+              <option>Genre</option>
+            <option value="random">Random</option>
+            <option value="adventure">Adventure</option>
+            <option value="action">Action</option>
+            <option value="comedy">Comedy</option>
+            <option value="crime">Crime</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="historical">Historical</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="sci-fi">Sci-fi</option>
+            <option value="thriller">Thriller</option>
+            <option value="western">Western</option>
+            <option value="animation">Animation</option>
+            <option value="drama">Drama</option>
+            <option value="documentary">Documentary</option>
+          </select>
+            
           </div>
 
           <div className="addProductItem">
             <label>Type</label>
             <select name="type" onChange={changeHandler}>
-              <option value="movie">Type</option>
+             <option value="movie">Type</option>
               <option value="movie">Movie</option>
               <option value="series">Series</option>
             </select>
@@ -78,13 +91,13 @@ export default function CreateNewList() {
             >
               {movies.map((movie) => (
                 <option key={movie._id} value={movie._id}>
-                  {movie.title}
+                  {movie.title}---{movie.genre}---{movie.isSeries==true ? ("series"):("movie") }
                 </option>
               ))}
             </select>
           </div>
         </div>
-        <button className="addProductButton" onClick={submitHandler}>
+        <button className="addProductButton button" onClick={submitHandler}>
           Create
         </button>
       </form>

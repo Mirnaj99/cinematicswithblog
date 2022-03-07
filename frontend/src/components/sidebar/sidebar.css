@@ -40,7 +40,8 @@
 }
 .sidebarList {
   list-style: none;
-  padding: 0 25px;
+  padding: 0px;
+  margin-left: 35px;
 }
 
 .sidebarListItem {
@@ -64,4 +65,22 @@
   font-size: 16px;
   margin-left: 15px;
   cursor: pointer;
+}
+
+.sidebarSelect {
+  font-size: 15px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  border: none;
+  padding: 20px;
+  width: 15vw;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #444;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.sidebarSelect:focus {
+  outline: none;
 }

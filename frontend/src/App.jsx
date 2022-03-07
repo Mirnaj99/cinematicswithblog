@@ -15,7 +15,9 @@ import Blog from "./pages/BlogHome/Blog";
 import Write from "./pages/write/Write";
 import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
-import TopBar from "./components/topbar/TopBar";
+import Details from "./pages/movieDetails/Details";
+import Watchtrailer from "./pages/watchtrailer/Watchtrailer";
+
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -40,14 +42,15 @@ const App = () => {
             <Route path="/movies" element={<Home type="movie" />} />
             <Route path="/series" element={<Home type="series" />} />
             <Route path="/watch" element={<Watch />} />
+            <Route path="/watchtrailer" element={<Watchtrailer />} />
+            <Route path="/details/:title" element={<Details />} />
           </>
         )}
       </Routes>
      
       <Routes>
       
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/posts" element={<Blog />} />
+        <Route path="/blog" element={user ? <Blog /> : <Login />} />
         <Route path="/post/:id" element={<Single />} />
         <Route path="/write" element={user ? <Write /> : <Login />} />
         <Route path="/settings" element={user ? <Settings /> : <Login />} />

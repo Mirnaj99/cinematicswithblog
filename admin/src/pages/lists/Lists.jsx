@@ -33,7 +33,7 @@ export default function List() {
             <Link
               to= {`/list/${params.row._id}`} state = {{list: params.row}}
             >
-              <button className="productListEdit">Edit</button>
+              <button className="productListEdit buttonEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="productListDelete"
@@ -47,7 +47,14 @@ export default function List() {
 
   return (
     <div className="productList"> 
-    <h1>LISTS</h1>
+      <div className="productTitleContainer">
+        <h1 className="productTitle">LISTS</h1>
+        <Link to="/createnewlist">
+          <button className="productAddButton button">Create</button>
+        </Link>
+      </div>
+    
+    
       <DataGrid
         rows={lists}
         disableSelectionOnClick

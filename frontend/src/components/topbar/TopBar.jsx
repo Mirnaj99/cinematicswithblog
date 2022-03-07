@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {NavLink, Link } from "react-router-dom";
 import "./topbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../authContext/AuthContext";
@@ -32,17 +32,17 @@ export default function TopBar() {
           
 
           <li className="topListItem">
-            <Link className="link" to="/blog">
+            <NavLink className="link" to="/blog" activeclassname="active">
               POSTS
-            </Link>
+            </NavLink>
           </li>
 
           <li className="topListItem">
-            <Link className="link" to="/write">
+            <NavLink className="link" to="/write" activeclassname="active">
               WRITE
-            </Link>
+            </NavLink>
           </li>
-          <Link to="/register" className="link">
+          <Link to="/register" className="link" activeclassname="active">
             <li className="topListItem" onClick={handleLogout}>
               {user && "LOGOUT"}
             </li>

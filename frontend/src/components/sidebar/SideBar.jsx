@@ -1,57 +1,86 @@
 import "./sidebar.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function SideBar() {
-  const [categ, setCategorie] = useState([]);
+  const [post, setPost] = useState([]);
+  let Navigate = useNavigate();
 
+  function handleChange(value) {
+    Navigate(`${value}`);
+  }
   useEffect(() => {
-    getCategories();
+    getMovie();
   }, []);
 
-  const getCategories = () => {
+  const getMovie = () => {
     axios
-      .get("/posts/",{
+      .get("/posts/", {
         headers: {
           token:
             "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
         },
       })
       .then((response) => {
-        setCategorie(response.data);
+        setPost(response.data);
+        console.log(response.data)
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const displayData = () => {
-    let uniquecateg = categ.filter(
+  const displayData1 = () => {
+
+
+    let uniquemovie = post.filter(
       (ele, ind) =>
         ind ===
-        categ.findIndex(
-          (elem) =>
-            elem.id === ele.id &&
-            elem.category.toLowerCase() === ele.category.toLowerCase()
+        post.findIndex(
+          (elem) => elem.id === ele.id && elem.movie === ele.movie
         )
     );
-    return uniquecateg.map((data) => {
+    return uniquemovie.map((data) => {
+      if(data.serie===""){
       return (
-        <li key={data._id} className="sidebarListItem">
-          <Link to={`/blog/?cat=${data.category}`} className="link">
-            {data.category}
-          </Link>
-        </li>
+        <option key={data._id} value={`/blog/?movie=${data.movie}`}> {data.movie}</option>
       );
+      }
+    });
+  };
+
+  const displayData2 = () => {
+
+
+    let uniqueserie = post.filter(
+      (ele, ind) =>
+        ind ===
+        post.findIndex(
+          (elem) => elem.id === ele.id && elem.serie === ele.serie
+        )
+    );
+    return uniqueserie.map((data) => {
+      if(data.movie===""){
+      return (
+        <option key={data._id} value={`/blog/?serie=${data.serie}`}> {data.serie}</option>
+      );
+      }
     });
   };
 
   return (
     <div className="sidebar">
       <div className="sidebarItem">
-        <span className="sidebarTitle">CATEGORIES</span>
-        <ul className="sidebarList">{displayData()}</ul>
+        <span className="sidebarTitle">MOVIES / SERIES</span>
+        <select className="sidebarSelect"   onChange={(event) => handleChange(event.target.value)}>
+          <option selected="true" disabled="disabled">Choose A Movie</option>
+          {displayData1()}
+        </select>
+        <select className="sidebarSelect"   onChange={(event) => handleChange(event.target.value)}>
+          <option  selected="true" disabled="disabled">Choose A Serie</option>
+          {displayData2()}
+        </select>
       </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>

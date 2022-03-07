@@ -2,15 +2,15 @@ import { ArrowBackOutlined } from "@material-ui/icons";
 import { useLocation, Link } from "react-router-dom";
 import "./watch.scss";
 
-const Watch = () => {
+const Watchtrailer = () => {
   const location = useLocation();
   const {movie} = location.state
- window.scroll(0,0)
+  window.scroll(0,0)
   console.log(location)
 
   return (
     <div className="watch">
-      <Link to={`/details/${movie.title}`} state={{movie:movie}}>
+       <Link to={`/details/${movie.title}`} state={{movie:movie}}>
         <div className="back">
           <ArrowBackOutlined />
           
@@ -21,10 +21,10 @@ const Watch = () => {
         autoPlay
         progress="true"
         controls
-        src={movie.video}
+        src={movie.trailer}
       />
     </div>
   );
 };
 
-export default Watch;
+export default Watchtrailer;

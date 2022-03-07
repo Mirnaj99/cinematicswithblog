@@ -5,21 +5,29 @@
   .category {
     position: absolute;
     top: 80px;
-    left: 50px;
+    left: 70%;
     font-size: 30px;
     font-weight: 500;
     display: flex;
     align-items: center;
     color: white;
+    background-color: rgba(0, 0, 0, 0.349);
+    border-radius: 5px;
+    padding: 2px;
 
     select {
+      width: 150px;
       cursor: pointer;
-      background-color: var(--main-color);
+      background-color: rgba(0, 0, 0, 0.603);
       border: 1px solid white;
       color: white;
       margin-left: 20px;
       padding: 5px;
+      .option{
+        background-color: rgba(0, 0, 0, 0.603) !important;
+      }
     }
+   
   }
 
   img {

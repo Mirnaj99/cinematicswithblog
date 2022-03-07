@@ -74,15 +74,23 @@ router.get("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   //    /api/posts?user=mhmd     /api/posts?cat=life
   const username = req.query.user;
-  const catName = req.query.cat;
+  const movieName = req.query.movie;
+  const serieName = req.query.serie;
   try {
     let posts;
     if (username) {
       posts = await Post.find({ username }); // <= in es6 if its the same name <= ( posts = await Post.find({ username:username }) );
-    } else if (catName) {
+    } else if (serieName) {
       posts = await Post.find({
-        category: {
-          $in: [catName], //includes
+        serie: {
+          $in: [serieName], //includes
+        },
+      });
+    }
+     else if (movieName) {
+      posts = await Post.find({
+        movie: {
+          $in: [movieName], //includes
         },
       });
     } else {

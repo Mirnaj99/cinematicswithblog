@@ -87,17 +87,15 @@ router.get("/random", verify, async (req, res) => {
 });
 
 // Get All Movies:
-router.get("/", verify, async (req, res) => {
-  if (req.user.isAdmin) {
+router.get("/", async (req, res) => {
+ 
     try {
       const movies = await Movie.find();
       res.status(200).json(movies.reverse());
     } catch (err) {
       res.status(500).json(err);
-    }
-  } else {
-    res.status(403).json("You are not allowed");
-  }
+    
+  } 
 });
 
 module.exports = router;

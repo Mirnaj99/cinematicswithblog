@@ -15,6 +15,7 @@ export default function ProductList() {
 
   const handleDelete = (id) => {
     deleteUser(id, dispatch);
+    window.location.reload();
   };
 
   const columns = [
@@ -37,10 +38,11 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
+        
             <Link
               to={`/user/${params.row._id}`} state = {{user: params.row }}
             >
-              <button className="userListEdit">Edit</button>
+              <button className="userListEdit buttonEdit">View</button>
             </Link>
             <DeleteOutline
               className="userListDelete"
@@ -54,7 +56,12 @@ export default function ProductList() {
 
   return (
     <div className="userList">
-      <h1>USERS</h1>
+         <div className="userTitleContainer">
+        <h1 className="userTitle">USERS</h1>
+        <Link to="/newUser">
+          <button className="productAddButton button">Create</button>
+        </Link>
+      </div>
       <DataGrid
         rows={users}
         disableSelectionOnClick

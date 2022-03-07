@@ -14,68 +14,69 @@ import {
   List,
   Add,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
+   
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/" className="link">
-              <li className="sidebarListItem active">
+            <NavLink to="/" className="link"  activeClassName="active">
+              <li className="sidebarListItem">
                 <LineStyle className="sidebarIcon" />
                 Home
               </li>
-            </Link>
+            </NavLink>
 
-            <Link to="/users" className="link">
+            <NavLink to="/users" className="link"  activeClassName="active">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Users
               </li>
-            </Link>
+            </NavLink>
 
-            <Link to="/movies" className="link">
+            <NavLink to="/movies" className="link"  activeClassName="active">
               <li className="sidebarListItem">
                 <MovieOutlined className="sidebarIcon" />
                 Movies
               </li>
-            </Link>
+            </NavLink>
 
-            <Link to="/lists" className="link">
+            <NavLink to="/lists" className="link"  activeClassName="active">
               <li className="sidebarListItem">
                 <List className="sidebarIcon" />
                 Lists
               </li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
 
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Action Menu</h3>
           <ul className="sidebarList">
-            <Link to="/newuser" className="link">
+            <NavLink to="/newuser" className="link"  activeClassName="active">
               <li className="sidebarListItem">
                 <Add className="sidebarIcon" />
                 New User
               </li>
-            </Link>
+            </NavLink>
 
-            <Link to="/newmovie" className="link">
+            <NavLink to="/newmovie" className="link"  activeClassName="active">
               <li className="sidebarListItem">
                 <Add className="sidebarIcon" />
                 New Movie
               </li>
-            </Link>
+            </NavLink>
 
-            <Link to="/createnewlist" className="link">
+            <NavLink to="/createnewlist" className="link"  activeClassName="active">
               <li className="sidebarListItem">
                 <Add className="sidebarIcon" />
                 New List
               </li>
-            </Link>
+            </NavLink>
 
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
@@ -124,5 +125,6 @@ export default function Sidebar() {
         </div>
       </div>
     </div>
+   
   );
 }

@@ -3,7 +3,7 @@ import logo from "./logo.jpg";
 import img from "./img.jpg";
 import { Search, Notifications, ArrowDropDown } from "@material-ui/icons";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logout } from "../../authContext/AuthAction";
 
@@ -20,22 +20,22 @@ const Navbar = () => {
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          <Link to="/" className="link">
+          <NavLink to="/" className="link" activeClassName="active">
             <img src={logo} alt="logo" />
-          </Link>
-          <Link to="/" className="link">
+          </NavLink>
+          <NavLink to="/" className="link" activeClassName="active">
             <span>HomePage</span>
-          </Link>
-          <Link to="/series" className="link">
+          </NavLink>
+          <NavLink to="/series" className="link" activeClassName="active">
             <span>Series</span>
-          </Link>
-          <Link to="/movies" className="link">
+          </NavLink>
+          <NavLink to="/movies" className="link" activeClassName="active">
             <span>Movies</span>
-          </Link>
+          </NavLink>
           <span>My List</span>
-          <Link to="/blog" className="link">
+          <NavLink to="/blog" className="link" activeClassName="active">
             <span>Blog</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="right">
         

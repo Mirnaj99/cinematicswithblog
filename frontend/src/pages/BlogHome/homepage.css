@@ -8,4 +8,16 @@
     color: #444;
     text-transform: capitalize;
 }
+.filtername{
+    color: red;
+}
+
+.noposts{
+    font-family: "Josefin Sans", sans-serif;
+    margin-left: 50px;
+    margin-top: 120px;
+    font-size: 20px;
+    line-height:25px ;
+}
+
 

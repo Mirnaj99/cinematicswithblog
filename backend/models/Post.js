@@ -18,11 +18,17 @@ const PostSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true,
+      default:""
     },
-    category: {
+    movie: {
       type: String,
-      required: true,
+    
     },
+    serie: {
+      type: String,
+     
+    },
+
   },
   { timestamps: true }
 );

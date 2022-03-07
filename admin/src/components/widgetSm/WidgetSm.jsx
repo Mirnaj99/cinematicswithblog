@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function WidgetSm() {
   const [newUsers, setNewUser] = useState([]);
-
+  const PF = "http://localhost:4000/images/";
   useEffect(() => {
     const getNewUsers = async () => {
       try {
@@ -31,8 +31,7 @@ export default function WidgetSm() {
           <li key={user._id} className="widgetSmListItem">
             <img
               src={
-                user.profilePic ||
-                "https://mir-s3-cdn-cf.behance.net/project_modules/disp/1bdc9a33850498.56ba69ac2ba5b.png"
+               PF+user.profilePic 
               }
               alt=""
               className="widgetSmImg"

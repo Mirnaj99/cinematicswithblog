@@ -32,7 +32,7 @@ const ListItem = ({ index, item }) => {
   }, [item]);
 
   return (
-    <Link to="/watch" state = {{movie: movie}}>
+    <Link to={`/details/${movie.title}`} state = {{movie: movie}}>
     
       <div
         className="listItem"
@@ -46,10 +46,9 @@ const ListItem = ({ index, item }) => {
             <video src={movie?.trailer} autoPlay={true} loop />
             <div className="itemInfo">
               <div className="icons">
-                <PlayArrow className="icon" />
-                <Add className="icon" />
-                <ThumbUpAltOutlined className="icon" />
-                <ThumbDownAltOutlined className="icon" />
+              <span style={{ marginRight: '1rem' }}><i class="fa-solid fa-star staricon"></i> {movie.rating}</span>
+               
+               
               </div>
               <div className="itemInfoTop">
                 <span>{movie?.title}</span>
