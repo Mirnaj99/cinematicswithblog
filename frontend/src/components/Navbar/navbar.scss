@@ -24,7 +24,9 @@
   .left {
     display: flex;
     align-items: center;
-
+    .active{
+      color: red !important;
+    }
     img {
       height: 25px;
       margin-right: 40px;
@@ -77,3 +79,5 @@
     }
   }
 }
+
+

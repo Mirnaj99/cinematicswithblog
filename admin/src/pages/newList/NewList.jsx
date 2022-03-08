@@ -9,9 +9,7 @@ export default function NewList() {
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">List</h1>
-        <Link to="/newList">
-          <button className="productAddButton">Create</button>
-        </Link>
+      
       </div>
       <div className="productTop">
         <div className="productTopRight">
@@ -47,7 +45,7 @@ export default function NewList() {
             <input type="text" placeholder={list?.type} />
           </div>
           <div className="productFormRight">
-            <button className="productButton">Update</button>
+            <button className="productButton button">Update</button>
           </div>
         </form>
       </div>

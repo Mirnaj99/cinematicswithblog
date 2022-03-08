@@ -49,7 +49,7 @@ export default function MovieList() {
             <Link
               to= {`/movie/${params.row._id}`} state = {{movie: params.row}}
             >
-              <button className="productListEdit">Edit</button>
+              <button className="productListEdit buttonEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="productListDelete"
@@ -63,7 +63,12 @@ export default function MovieList() {
 
   return (
     <div className="productList">
-      <h1>MOVIES</h1>
+       <div className="productTitleContainer">
+        <h1 className="productTitle">MOVIES</h1>
+        <Link to="/newmovie">
+          <button className="productAddButton button">Create</button>
+        </Link>
+      </div>
       <DataGrid
         rows={movies}
         disableSelectionOnClick

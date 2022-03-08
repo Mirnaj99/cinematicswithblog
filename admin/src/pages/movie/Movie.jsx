@@ -9,9 +9,7 @@ export default function Movie() {
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Movie</h1>
-        <Link to="/newproduct">
-          <button className="productAddButton">Create</button>
-        </Link>
+
       </div>
       <div className="productTop">
         <div className="productTopRight">
@@ -68,7 +66,7 @@ export default function Movie() {
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div>
-            <button className="productButton">Update</button>
+            <button className="productButton button">Update</button>
           </div>
         </form>
       </div>

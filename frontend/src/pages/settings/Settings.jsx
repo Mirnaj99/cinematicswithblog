@@ -101,7 +101,7 @@ export default function Settings() {
               onChange={(e) => setFile(e.target.files[0])}
             />
             </div>
-            <label>Username: {user.username} </label>
+            <label className="username">Username: {user.username} </label>
             <label>Email</label>
             <input type="email" placeholder={user.email} onChange={e => setEmail(e.target.value)} />
             <label>Password</label>

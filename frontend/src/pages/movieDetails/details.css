@@ -1,0 +1,118 @@
+.details{
+    display: flex;
+    flex-direction: column;
+    flex:12;
+    background-color: var(--main-color);
+   
+}
+
+.detailsImg{
+    width: 100%;
+    object-fit:cover;
+    height: 600px;
+}
+.back {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .back :hover{
+    color: red !important;
+  }
+.detailsYear{
+    font-size: large;
+}
+.detailsInfoTop{
+    padding:15px 0px 0px 20px;
+    margin-top: -79px;
+    color: rgba(255, 255, 255, 0.842);
+    font-size: x-large;
+    background-image: linear-gradient(rgba(255, 255, 255, 0),#0b0b0b2b,#0b0b0b6b,#0b0b0ba3, #0b0b0bc7, #0b0b0be0, #0b0b0b,var(--main-color));
+    
+}
+.detailsInfoBottom{
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    color:rgba(255, 255, 255, 0.842);
+    font-family: "Varela Round", sans-serif;
+}
+
+.detailsPlay{
+    width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 20px;
+   margin-top: -15px;
+}
+.playButton{
+    background-color: red;
+    color:rgba(255, 255, 255, 0.842);
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    width: 40%;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+  
+}
+.watchButton{
+    padding: 10px 180px;
+}
+.icon{
+    color:rgba(255, 255, 255, 0.842);
+    margin-right: 10px;
+    cursor: pointer;
+}
+.detailsAddInfo{
+    position: absolute;
+    right:50px;
+    bottom: -18px;
+    font-size: medium;
+    color: grey;
+    text-transform: capitalize;
+   
+}
+.detailsGenre{
+    margin-right: 20px;
+}
+.detailsDesc{
+    margin-top: 20px;
+    padding: 0 50px 0 0px;
+    margin-bottom: 30px;
+}
+
+.detailsGoto{
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-bottom: 50px;
+    
+}
+.detailsGotoItem{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.detailsIcon{
+    font-size: 40px;
+   
+}
+.iconDetails{
+    cursor: pointer;
+}
+.staricon{
+    font-size: 15px;
+    color: yellow;
+}

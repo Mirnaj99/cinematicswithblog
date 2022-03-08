@@ -2,6 +2,7 @@ import "./featured.scss";
 import { PlayArrow, InfoOutlined } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState();
@@ -26,6 +27,7 @@ const Featured = ({ type, setGenre }) => {
 
   const genreChangeHandler = (e) => {
     setGenre(e.target.value);
+    window.scrollTo(0, 400);
   };
 
   return (
@@ -34,21 +36,51 @@ const Featured = ({ type, setGenre }) => {
         <div className="category">
           <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre" onChange={genreChangeHandler}>
-            <option>Genre</option>
-            <option value="adventure">Adventure</option>
-            <option value="action">Action</option>
-            <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="historical">Historical</option>
-            <option value="horror">Horror</option>
-            <option value="romance">Romance</option>
-            <option value="sci-fi">Sci-fi</option>
-            <option value="thriller">Thriller</option>
-            <option value="western">Western</option>
-            <option value="animation">Animation</option>
-            <option value="drama">Drama</option>
-            <option value="documentary">Documentary</option>
+            <option className="option" value="random">
+              Genre
+            </option>
+            <option className="option" value="adventure">
+              Adventure
+            </option>
+            <option className="option" value="action">
+              Action
+            </option>
+            <option className="option" value="comedy">
+              Comedy
+            </option>
+            <option className="option" value="crime">
+              Crime
+            </option>
+            <option className="option" value="fantasy">
+              Fantasy
+            </option>
+            <option className="option" value="historical">
+              Historical
+            </option>
+            <option className="option" value="horror">
+              Horror
+            </option>
+            <option className="option" value="romance">
+              Romance
+            </option>
+            <option className="option" value="sci-fi">
+              Sci-fi
+            </option>
+            <option className="option" value="thriller">
+              Thriller
+            </option>
+            <option className="option" value="western">
+              Western
+            </option>
+            <option className="option" value="animation">
+              Animation
+            </option>
+            <option className="option" value="drama">
+              Drama
+            </option>
+            <option className="option" value="documentary">
+              Documentary
+            </option>
           </select>
         </div>
       )}
@@ -57,14 +89,19 @@ const Featured = ({ type, setGenre }) => {
         <img src={content?.imgTitle} alt="" />
         <span className="desc">{content?.desc}</span>
         <div className="buttons">
-          <button className="play">
-            <PlayArrow />
-            <span>Play</span>
-          </button>
-          <button className="more">
+          <Link to="/watch" className="link" state={{movie:content}}>
+            {" "}
+            <button className="play button">
+              <PlayArrow />
+              <span>Play</span>
+            </button>
+          </Link>
+          <Link to={`/details/${content?.title}`} className="link" state={{movie:content}} >
+          <button className="more button">
             <InfoOutlined />
             <span>Info</span>
           </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ export default function SinglePost() {
   const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
+    window.scroll(0,0);
     const getPost = async () => {
       const res = await axios.get("/posts/" + id, {
         headers: {
@@ -64,11 +65,25 @@ export default function SinglePost() {
       window.location.reload();
       setUpdateMode(false);
     } catch (err) {}
-  };
 
+ 
+  };
+  if(post.movie==""){
+    var filter="serie";
+    var filtertitle=post.serie;
+  }
+  else  if(post.serie==""){
+    var filter="movie";
+    var filtertitle=post.movie;
+  }
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
+      <h1 className="singlePostMovie">
+<Link to={`/blog/?${filter}=${filtertitle}`} className="link">
+  <b> {filtertitle}</b>
+</Link>
+</h1>
         {post.photo && (
           <img src={PF + post.photo} alt="" className="singlePostImg" />
         )}
@@ -83,6 +98,7 @@ export default function SinglePost() {
         ) : (
           <h1 className="singlePostTitle">
             {post.title}
+           
             {post.username === user?.username && (
               <div className="singlePostEdit">
                 <i
@@ -104,6 +120,8 @@ export default function SinglePost() {
               <b> {post.username}</b>
             </Link>
           </span>
+        
+          
           <span className="singlePostDate">
             {new Date(post.createdAt).toDateString()}
           </span>

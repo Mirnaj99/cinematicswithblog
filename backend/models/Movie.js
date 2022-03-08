@@ -39,6 +39,12 @@ const MovieSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    imdb: {
+      type: String
+    },
+    rating: {
+      type: Number
+    }
   },
   { timestamps: true }
 );

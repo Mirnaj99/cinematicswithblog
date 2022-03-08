@@ -5,18 +5,26 @@ import "./homepage.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import TopBar from "../../components/topbar/TopBar";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
 
-  const filter = search.split("=")[1];
+  if (search.includes("%20")) {
+    var filter = search.split("=")[1].replace(/%20/g, " ");
+    console.log(filter);
+  } else {
+    var filter = search.split("=")[1];
+  }
 
-  if (search.split("=")[0] === "?cat") {
-    var filterName = "Category:";
+  if (search.split("=")[0] === "?movie") {
+    var filterName = "Movie:";
   } else if (search.split("=")[0] === "?user") {
     var filterName = "Author:";
+  } else if (search.split("=")[0] === "?serie") {
+    var filterName = "Serie:";
   }
 
   useEffect(() => {
@@ -33,14 +41,30 @@ export default function Blog() {
     fetchPosts();
   }, [search]);
 
+  const displayData =  () => {
+    if (posts.length == 0) {
+      return (
+        <span className="noposts">
+          <p>No Posts Found..</p>
+          <Link to="/write" className="link">
+            {" "}
+            <p>Be The First To Share Your Thoughts About "{filter}"</p>{" "}
+          </Link>
+        </span>
+      );
+    }
+  };
+
   return (
     <>
-    <TopBar />
+      <TopBar />
       <Header />
       <h1 className="filter">
-        {filterName} {filter}
+        <span className="filtername">{filterName}</span> {filter}
       </h1>
+
       <div className="homeblog">
+        {displayData()}
         <Posts posts={posts} />
         <SideBar />
       </div>

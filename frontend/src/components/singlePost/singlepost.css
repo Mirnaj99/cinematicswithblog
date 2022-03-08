@@ -94,3 +94,8 @@
     align-self: flex-end;
     margin-top: 20px;
   }
+.singlePostMovie{
+  font-family: "Lora", serif;
+  color: red;
+  margin-bottom: 10px;
+}

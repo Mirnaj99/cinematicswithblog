@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "./write.css";
 import axios from "axios";
 import { AuthContext } from "../../authContext/AuthContext";
@@ -7,9 +7,50 @@ import TopBar from "../../components/topbar/TopBar";
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [category, setCat] = useState("");
+  const [movie, setMovie] = useState("");
+  const [serie, setSerie] = useState("");
   const [file, setFile] = useState(null);
   const { user } = useContext(AuthContext);
+  const [movies, getMovies] = useState([]);
+  const [selected1, setSelected1] = useState("");
+  const [selected2, setSelected2] = useState("");
+
+  useEffect(() => {
+    getMovie();
+  }, []);
+
+  const getMovie = () => {
+    axios
+      .get("/movies")
+      .then((response) => {
+        getMovies(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const displayData1 = () => {
+    return movies.map((m) => {
+      if (m.isSeries==false){
+      return (
+        <option key={m._id} value={m.title}>
+          {m.title}
+        </option>
+      );
+      }
+    });
+  };
+  const displayData2 = () => {
+    return movies.map((m) => {
+      if (m.isSeries==true){
+      return (
+        <option key={m._id} value={m.title}>
+          {m.title}
+        </option>
+      );
+      }
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +58,8 @@ export default function Write() {
       username: user.username,
       title,
       desc,
-      category,
+      movie,
+      serie
     };
     if (file) {
       const data = new FormData();
@@ -46,56 +88,73 @@ export default function Write() {
   };
   return (
     <>
-    <TopBar />
-    <div className="write">
-      {file && (
-        <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
-      )}
-      <form className="writeForm" onSubmit={handleSubmit}>
-        <div className="writeFormGroup">
-          <label htmlFor="fileInput">
-            <i className="writeIcon fa-solid fa-plus"></i>
-          </label>
-          <input
-            type="file"
-            id="fileInput"
-            name="profilePic"
-            style={{ display: "none" }}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <input
-            type="text"
-            placeholder="Title"
-            name="title"
-            className="writeInput"
-            autoFocus={true}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div className="writeFormGroup">
-          <input
-            type="text"
-            placeholder="Category"
-            name="category"
-            className="writeInputCat"
-            autoFocus={true}
-            onChange={(e) => setCat(e.target.value)}
-          />
-        </div>
-        <div className="writeFormGroup">
-          <textarea
-            placeholder="Tell your story...."
-            name="desc"
-            type="text"
-            onChange={(e) => setDesc(e.target.value)}
-            className="writeInput writeText"
-          ></textarea>
-        </div>
-        <button className="writeSubmit button" type="submit">
-          Publish
-        </button>
-      </form>
-    </div>
+      <TopBar />
+      <div className="write">
+        {file && (
+          <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
+        )}
+        <form className="writeForm" onSubmit={handleSubmit}>
+          <div className="writeFormGroup">
+            <label htmlFor="fileInput">
+              <i className="writeIcon fa-solid fa-plus"></i>
+            </label>
+            <input
+              type="file"
+              id="fileInput"
+              name="profilePic"
+              style={{ display: "none" }}
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+            </div>
+             <div className="writeFormGroup">
+            <input
+              type="text"
+              placeholder="Title"
+              name="title"
+              className="writeInput"
+              autoFocus={true}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            </div>
+          
+          <div className="writeFormGroup">
+            <select
+              disabled={selected2}
+              name="movie"
+              id="movie"
+              className="writeInputMovie"
+              autoFocus={true}
+              onChange={(e) =>{ setMovie(e.target.value); setSelected1("disabled")}}
+            >
+              <option selected="true" disabled="disabled">Movie</option>
+              {displayData1()}
+            </select>
+            <select
+                disabled={selected1}
+              name="serie"
+              id="serie"
+              className="writeInputMovie"
+              autoFocus={true}
+              onChange={(e) => {setSerie(e.target.value); setSelected2("disabled")}}
+            >
+              <option selected="true" disabled="disabled">Serie</option>
+              {displayData2()}
+            </select>
+          </div>
+          <div className="writeFormGroup">
+            <textarea
+              placeholder="Share Your Thoughts...."
+              name="desc"
+              type="text"
+              onChange={(e) => setDesc(e.target.value)}
+              className="writeInput writeText"
+            ></textarea>
+          </div>
+          <button className="writeSubmit button" type="submit">
+            Publish
+          </button>
+        </form>
+      </div>
     </>
   );
 }
