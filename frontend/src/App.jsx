@@ -17,7 +17,7 @@ import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
 import Details from "./pages/movieDetails/Details";
 import Watchtrailer from "./pages/watchtrailer/Watchtrailer";
-
+import Search from "./pages/Search/Search";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -36,6 +36,7 @@ const App = () => {
           path="/login"
           element={!user ? <Login /> : <Navigate replace to="/" />}
         />
+        <Route path="/search" element={<Search />} />
 
         {user && (
           <>
@@ -47,9 +48,8 @@ const App = () => {
           </>
         )}
       </Routes>
-     
+
       <Routes>
-      
         <Route path="/blog" element={user ? <Blog /> : <Login />} />
         <Route path="/post/:id" element={<Single />} />
         <Route path="/write" element={user ? <Write /> : <Login />} />
