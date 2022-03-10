@@ -22,3 +22,4 @@ const MovieData = ({ movies }) => {
 };
 
 export default MovieData;
+

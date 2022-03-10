@@ -1,5 +1,4 @@
 import "./header.css";
-import { Slide } from 'react-slideshow-image';
 export default function Header() {
   return (
     <div className="header">
