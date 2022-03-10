@@ -1,46 +1,93 @@
 .search {
 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--main-color);
+  font-family: "Roboto", sans-serif;
+}
+
+.movieData {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background-color: var(--main-color);
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.searchTxt {
+  margin: 30px;
+  height: 5vh;
+  color: #444;
+  width: 40%;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: auto;
+  padding-left: 10px;
+}
+.message{
+  color: var(--main-color);
+}
+.loader {
+  border: 10px solid  var(--main-color);
+  border-top: 10px solid red;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-top: 20%;
+  margin-left: 45%;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     background-color: black;
+
   }
-  
-  .movieData {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    background-color: black;
-    color: white;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  
-  .inputForm{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 694px) and (max-width: 915px) {
+  .movie {
+    max-width: 33%;
   }
-  
-  input{
-    margin: 30px;
+}
+
+@media screen and (min-width: 652px) and (max-width: 693px) {
+  .movie {
+    max-width: 50%;
   }
-  
-  .searchTxt{
-    height: 5vh;
-    color: black;
-    width: 40%;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor:auto;
-    padding-left: 10px;
+}
+
+@media screen and (max-width: 651px) {
+  .movie {
+    max-width: 100%;
+    margin: auto;
   }
+
+}
+
   
   .loader {
     border: 10px solid black;
@@ -163,4 +210,5 @@ input{
     margin: auto;
   }
 }
+
 

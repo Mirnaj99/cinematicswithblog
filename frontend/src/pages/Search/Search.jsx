@@ -66,7 +66,7 @@ const Search = () => {
         />
       </form>
       <h2>
-        <center>{message}</center>
+        <center className="message">{message}</center>
       </h2>
 
       {loading ? (

@@ -1,5 +1,6 @@
 import "./searchMovie.scss";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MovieData = ({ movies }) => {
   return (
@@ -10,7 +11,19 @@ const MovieData = ({ movies }) => {
             <span>{movie.title}</span>
 
             <div>
-              <img width="200" height={120} src={movie.img} />
+              <Link
+                to={`/details/${movie.title}`}
+                state={{ movie: movie }}
+                className="link"
+              >
+                
+                <img
+                  className="imgsearch"
+                  width="200"
+                  height={120}
+                  src={movie.img}
+                />
+              </Link>
             </div>
 
             <span>({movie.year})</span>
