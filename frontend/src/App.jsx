@@ -17,7 +17,9 @@ import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
 import Details from "./pages/movieDetails/Details";
 import Watchtrailer from "./pages/watchtrailer/Watchtrailer";
+
 import Mylist from "./pages/mylist/Mylist";
+
 import Search from "./pages/Search/Search";
 
 const App = () => {
@@ -37,6 +39,7 @@ const App = () => {
           path="/login"
           element={!user ? <Login /> : <Navigate replace to="/" />}
         />
+
         <Route
           path="/movies"
           element={user ? <Home type="movie" /> : <Login />}
@@ -56,6 +59,8 @@ const App = () => {
         />
         <Route path="/mylist" element={user ? <Mylist /> : <Login />} />
         <Route path="/search" element={user ? <Search /> : <Login />}  />
+
+      
       </Routes>
 
       <Routes>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import MovieData from "../../components/searchMovie/SearchMovie.jsx";
+
+import MovieData from "../../components/searchMovie/SearchMovie";
 import "./search.scss";
 
 const Search = () => {
@@ -83,3 +84,4 @@ const Search = () => {
   );
 };
 export default Search;
+
