@@ -1,9 +1,9 @@
 import "./navbar.scss";
 import logo from "./logo.jpg";
 import img from "./img.jpg";
-import { Search, Notifications, ArrowDropDown } from "@material-ui/icons";
+import { Search, ArrowDropDown } from "@material-ui/icons";
 import { useContext, useState } from "react";
-import { Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logout } from "../../authContext/AuthAction";
 
@@ -40,7 +40,9 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="right">
+
         <Link to="/search" className="link">
+
             <Search className="icon" />
           </Link>
           <img src={PF + user.profilePic} alt="img" />
@@ -48,10 +50,12 @@ const Navbar = () => {
           <div className="profile">
             <ArrowDropDown className="icon" />
             <div className="options">
-              <Link className ="link" to = "/settings">
-              <span>Settings</span>
+              <Link className="link" to="/settings">
+                <span>Settings</span>
               </Link>
-              <span className="link" onClick={() => dispatch(logout())}>Logout</span>
+              <span className="link" onClick={() => dispatch(logout())}>
+                Logout
+              </span>
             </div>
           </div>
         </div>
