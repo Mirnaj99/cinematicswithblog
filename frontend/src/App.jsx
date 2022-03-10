@@ -18,6 +18,7 @@ import Single from "./pages/single/Single";
 import Details from "./pages/movieDetails/Details";
 import Watchtrailer from "./pages/watchtrailer/Watchtrailer";
 import Mylist from "./pages/mylist/Mylist";
+import Search from "./pages/Search/Search";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -54,7 +55,7 @@ const App = () => {
           element={user ? <Details /> : <Login />}
         />
         <Route path="/mylist" element={user ? <Mylist /> : <Login />} />
-        
+        <Route path="/search" element={user ? <Search /> : <Login />}  />
       </Routes>
 
       <Routes>

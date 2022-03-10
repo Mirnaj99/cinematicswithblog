@@ -40,7 +40,9 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="right">
-        
+        <Link to="/search" className="link">
+            <Search className="icon" />
+          </Link>
           <img src={PF + user.profilePic} alt="img" />
 
           <div className="profile">
