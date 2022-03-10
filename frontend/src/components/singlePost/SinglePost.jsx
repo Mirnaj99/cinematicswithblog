@@ -64,10 +64,12 @@ export default function SinglePost() {
       );
       window.location.reload();
       setUpdateMode(false);
+    
     } catch (err) {}
 
- 
+    
   };
+ 
   if(post.movie==""){
     var filter="serie";
     var filtertitle=post.serie;

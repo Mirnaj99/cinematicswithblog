@@ -20,20 +20,22 @@ const Navbar = () => {
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          <NavLink to="/" className="link" activeClassName="active">
+          <NavLink to="/" className="link" activeclassname="active">
             <img src={logo} alt="logo" />
           </NavLink>
-          <NavLink to="/" className="link" activeClassName="active">
+          <NavLink to="/" className="link" activeclassname="active">
             <span>HomePage</span>
           </NavLink>
-          <NavLink to="/series" className="link" activeClassName="active">
+          <NavLink to="/series" className="link" activeclassname="active">
             <span>Series</span>
           </NavLink>
-          <NavLink to="/movies" className="link" activeClassName="active">
+          <NavLink to="/movies" className="link" activeclassname="active">
             <span>Movies</span>
           </NavLink>
+          <NavLink to="/mylist" className="link" activeclassname="active">
           <span>My List</span>
-          <NavLink to="/blog" className="link" activeClassName="active">
+          </NavLink>
+          <NavLink to="/blog" className="link" activeclassname="active">
             <span>Blog</span>
           </NavLink>
         </div>

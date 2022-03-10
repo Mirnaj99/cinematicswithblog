@@ -17,7 +17,7 @@ import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
 import Details from "./pages/movieDetails/Details";
 import Watchtrailer from "./pages/watchtrailer/Watchtrailer";
-
+import Mylist from "./pages/mylist/Mylist";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -36,20 +36,28 @@ const App = () => {
           path="/login"
           element={!user ? <Login /> : <Navigate replace to="/" />}
         />
-
-        {user && (
-          <>
-            <Route path="/movies" element={<Home type="movie" />} />
-            <Route path="/series" element={<Home type="series" />} />
-            <Route path="/watch" element={<Watch />} />
-            <Route path="/watchtrailer" element={<Watchtrailer />} />
-            <Route path="/details/:title" element={<Details />} />
-          </>
-        )}
+        <Route
+          path="/movies"
+          element={user ? <Home type="movie" /> : <Login />}
+        />
+        <Route
+          path="/series"
+          element={user ? <Home type="series" /> : <Login />}
+        />
+        <Route path="/watch" element={user ? <Watchtrailer /> : <Login />} />
+        <Route
+          path="/watchtrailer"
+          element={user ? <Watchtrailer /> : <Login />}
+        />
+        <Route
+          path="/details/:title"
+          element={user ? <Details /> : <Login />}
+        />
+        <Route path="/mylist" element={user ? <Mylist /> : <Login />} />
+        
       </Routes>
-     
+
       <Routes>
-      
         <Route path="/blog" element={user ? <Blog /> : <Login />} />
         <Route path="/post/:id" element={<Single />} />
         <Route path="/write" element={user ? <Write /> : <Login />} />

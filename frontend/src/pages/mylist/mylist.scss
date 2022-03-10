@@ -1,0 +1,55 @@
+.vm,
+.h2mylist,
+.h2mylist strong,
+.h2mylist span {
+  vertical-align: middle;
+}
+
+.mylistbody {
+
+background-color: var(--main-color);
+font-family: "Roboto", sans-serif;
+width: 100%;
+height: fit-content;
+
+}
+.listcard {
+ 
+padding-top: 80px;
+
+}
+.mylistwrapper {
+  padding: 15px;
+ 
+}
+.h2mylist {
+  padding: 10px;
+  padding-left: 25px;
+  color: #ccc;
+  margin: 0;
+}
+.h2mylist strong {
+  z-index: 2;
+  background: #24282f;
+  padding: 4px 8px;
+}
+.h2mylist span {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-left: 10px;
+}
+.h2mylist:after {
+  content: '';
+  z-index: 1;
+  bottom: 50%;
+  margin-bottom: -2px;
+  height: 2px;
+  left: 0;
+  right: 0;
+  background: #373d47;
+}
+.nolist{
+    color: #aaa;
+    font-size: large;
+    margin: 150px 100px;
+}

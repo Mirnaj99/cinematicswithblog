@@ -2,20 +2,92 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./details.css";
 import { ArrowBackOutlined } from "@material-ui/icons";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../authContext/AuthContext";
+import axios from "axios";
 
 export default function Details() {
   const location = useLocation();
   const { movie } = location.state;
-  window.scrollTo(0, 0);
-  if (movie.isSeries == true) {
+  const [mylist, setList] = useState("");
+  const [add, checkAdd] = useState(false);
+  const { user, dispatch } = useContext(AuthContext);
+
+
+
+  if (movie.isSeries === true) {
     var filter = "serie";
-  } else if (movie.isSeries == false) {
+  } else if (movie.isSeries === false) {
     var filter = "movie";
   }
+
+  useEffect(() => {
+    setList(movie._id);
+
+    if (user.mylist.includes(movie._id) === true) {
+      checkAdd(true);
+    } else {
+      checkAdd(false);
+    }
+  }, [mylist, add, user.mylist, movie._id]);
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+
+    const updatedList = {
+      mylist,
+    };
+
+    try {
+      // setList({...mylist,[e.target.name]:movie._id}
+      const res = await axios.put(
+        "/users/updatelist/" + user._id,
+        updatedList,
+        {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        }
+      );
+      dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
+      window.scrollTo(0, 600);
+    } catch (err) {
+      dispatch({ type: "UPDATE_FAILURE" });
+      console.log(err);
+    }
+  };
+
+  const handleRemove = async (e) => {
+    e.preventDefault();
+
+    const updatedList = {
+      mylist,
+    };
+
+    try {
+      // setList({...mylist,[e.target.name]:movie._id}
+      const res = await axios.put(
+        "/users/removelist/" + user._id,
+        updatedList,
+        {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        }
+      );
+      dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
+      window.scrollTo(0, 600);
+    } catch (err) {
+      dispatch({ type: "UPDATE_FAILURE" });
+      console.log(err);
+    }
+  };
+
   return (
     <div className="details">
       <Link to="/">
-        {" "}
         <div className="back">
           <ArrowBackOutlined />{" "}
         </div>
@@ -30,7 +102,9 @@ export default function Details() {
             <h1>{movie.title}</h1>
           </div>
           <div className="detailsYear">
-            <span style={{ marginRight: '1rem' }}><i class="fa-solid fa-star staricon"></i> {movie.rating}</span>
+            <span style={{ marginRight: "1rem" }}>
+              <i className="fa-solid fa-star staricon"></i> {movie.rating}
+            </span>
             <span> {movie.year}</span>
           </div>
         </div>
@@ -42,7 +116,7 @@ export default function Details() {
                 state={{ movie: movie }}
                 className="watchButton linkButton"
               >
-                <i class="fa-solid fa-play icon"></i>Watch Now
+                <i className="fa-solid fa-play icon"></i>Watch Now
               </Link>
             </button>
           </div>
@@ -55,31 +129,55 @@ export default function Details() {
           </div>
           <div className="detailsGoto">
             <div className="detailsGotoItem ">
-              <Link to="/watchtrailer "   state={{ movie: movie }} className="link">
+              <Link
+                to="/watchtrailer "
+                state={{ movie: movie }}
+                className="link"
+              >
                 <div className="detailsIcon ">
-                  <i class="fa-brands fa-youtube iconDetails  "></i>
+                  <i className="fa-brands fa-youtube iconDetails  "></i>
                 </div>
               </Link>
               <div className="detailsIconSpan ">Trailer</div>
             </div>
             <div className="detailsGotoItem ">
-                
-              <div className="detailsIcon link"  onClick={(e) =>window.open(`${movie.imdb}`)}>
-                <i class="fa-brands fa-imdb iconDetails "></i>
+              <div
+                className="detailsIcon link"
+                onClick={(e) => window.open(`${movie.imdb}`)}
+              >
+                <i className="fa-brands fa-imdb iconDetails "></i>
               </div>
-             
+
               <div className="detailsIconSpan  ">IMDB</div>
             </div>
-            <div className="detailsGotoItem">
-              <div className="detailsIcon">
-                <i class="fa-solid fa-plus iconDetails "></i>
+
+            {add ? (
+              <div className="detailsGotoItem">
+                <div className="detailsIcon">
+                  <i
+                    className="fa-solid fa-check iconDetails link"
+                    onClick={handleRemove}
+                  ></i>
+                </div>
+                <div className="detailsIconSpan">My List</div>
               </div>
-              <div className="detailsIconSpan  ">My List</div>
-            </div>
+            ) : (
+              <div className="detailsGotoItem">
+                <div className="detailsIcon">
+                  <i
+                    className="fa-solid fa-plus iconDetails link"
+                    name="mylist"
+                    onClick={handleAdd}
+                  ></i>
+                </div>
+                <div className="detailsIconSpan">My List</div>
+              </div>
+            )}
+
             <div className="detailsGotoItem">
               <div className="detailsIcon">
                 <Link to={`/blog/?${filter}=${movie.title}`} className="link">
-                  <i class="fa-solid fa-blog iconDetails link"></i>
+                  <i className="fa-solid fa-blog iconDetails link"></i>
                 </Link>
               </div>
               <div className="detailsIconSpan ">View Blog</div>
@@ -87,7 +185,7 @@ export default function Details() {
             <div className="detailsGotoItem">
               <div className="detailsIcon">
                 <Link to="/write" className="link">
-                  <i class="fa-solid fa-feather-pointed iconDetails link"></i>
+                  <i className="fa-solid fa-feather-pointed iconDetails link"></i>
                 </Link>
               </div>
 

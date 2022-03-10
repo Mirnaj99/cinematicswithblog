@@ -17,7 +17,7 @@ export default function TopBar() {
       <ul className="topList">
       <li className="topListItem">
             <Link className=" back" to="/">
-            <i class="topIcon fa-solid fa-angles-left link"></i>
+            <i className="topIcon fa-solid fa-angles-left link"></i>
             </Link>
           </li>
           </ul>

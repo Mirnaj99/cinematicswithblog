@@ -13,6 +13,7 @@ export default function Single() {
         <SideBar />
 
     </div>
+    
     </>
   )
 }

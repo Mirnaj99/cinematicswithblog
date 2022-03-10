@@ -24,7 +24,7 @@ export default function SideBar() {
       })
       .then((response) => {
         setPost(response.data);
-        console.log(response.data)
+        
       })
       .catch((error) => {
         console.log(error);
@@ -74,11 +74,11 @@ export default function SideBar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">MOVIES / SERIES</span>
         <select className="sidebarSelect"   onChange={(event) => handleChange(event.target.value)}>
-          <option selected="true" disabled="disabled">Choose A Movie</option>
+          <option selected={true} disabled="disabled">Choose A Movie</option>
           {displayData1()}
         </select>
         <select className="sidebarSelect"   onChange={(event) => handleChange(event.target.value)}>
-          <option  selected="true" disabled="disabled">Choose A Serie</option>
+          <option  selected={true} disabled="disabled">Choose A Serie</option>
           {displayData2()}
         </select>
       </div>

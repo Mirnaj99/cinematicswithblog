@@ -14,7 +14,7 @@ export default function Blog() {
 
   if (search.includes("%20")) {
     var filter = search.split("=")[1].replace(/%20/g, " ");
-    console.log(filter);
+   
   } else {
     var filter = search.split("=")[1];
   }
@@ -44,6 +44,7 @@ export default function Blog() {
   const displayData =  () => {
     if (posts.length == 0) {
       return (
+        <div className="posts">
         <span className="noposts">
           <p>No Posts Found..</p>
           <Link to="/write" className="link">
@@ -51,7 +52,12 @@ export default function Blog() {
             <p>Be The First To Share Your Thoughts About "{filter}"</p>{" "}
           </Link>
         </span>
+        </div>
       );
+    }
+    else{  return (
+<Posts posts={posts} />
+    )
     }
   };
 
@@ -64,8 +70,10 @@ export default function Blog() {
       </h1>
 
       <div className="homeblog">
-        {displayData()}
-        <Posts posts={posts} />
+  
+    {displayData()}
+          
+        
         <SideBar />
       </div>
     </>
