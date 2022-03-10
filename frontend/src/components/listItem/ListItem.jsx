@@ -46,7 +46,7 @@ const ListItem = ({ index, item }) => {
             <video src={movie?.trailer} autoPlay={true} loop />
             <div className="itemInfo">
               <div className="icons">
-              <span style={{ marginRight: '1rem' }}><i class="fa-solid fa-star staricon"></i> {movie.rating}</span>
+              <span style={{ marginRight: '1rem' }}><i className="fa-solid fa-star staricon"></i> {movie.rating}</span>
                
                
               </div>

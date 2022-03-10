@@ -126,7 +126,7 @@ export default function Write() {
               autoFocus={true}
               onChange={(e) =>{ setMovie(e.target.value); setSelected1("disabled")}}
             >
-              <option selected="true" disabled="disabled">Movie</option>
+              <option selected={true} disabled="disabled">Movie</option>
               {displayData1()}
             </select>
             <select
@@ -137,7 +137,7 @@ export default function Write() {
               autoFocus={true}
               onChange={(e) => {setSerie(e.target.value); setSelected2("disabled")}}
             >
-              <option selected="true" disabled="disabled">Serie</option>
+              <option selected={true} disabled="disabled">Serie</option>
               {displayData2()}
             </select>
           </div>

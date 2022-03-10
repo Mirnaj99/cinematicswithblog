@@ -21,7 +21,7 @@ export default function Settings() {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
     const updatedUser = {
-    
+      file,
       email,
       password,
     };
@@ -52,7 +52,7 @@ export default function Settings() {
       setSuccess(true);
 
     } catch (err) {
-      dispatch({ type: "UPDATE_FAILURE" });
+      
     }
   };
 
