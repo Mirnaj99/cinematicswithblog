@@ -35,6 +35,9 @@ const Register = () => {
       if (err.response.status === 400) {
         setErrorMessage(err.response.data.message);
       }
+      if (err.response.status === 404) {
+        setErrorMessage("Please Fill All The Fields");
+      }
       console.log(err);
     }
   };

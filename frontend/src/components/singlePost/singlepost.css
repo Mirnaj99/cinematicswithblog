@@ -99,3 +99,11 @@
   color: red;
   margin-bottom: 10px;
 }
+
+.rate{
+  color: #b49656;;
+  float: right;
+}
+.starrate{
+font-size: 25px;
+}

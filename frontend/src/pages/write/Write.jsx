@@ -14,10 +14,14 @@ export default function Write() {
   const [movies, getMovies] = useState([]);
   const [selected1, setSelected1] = useState("");
   const [selected2, setSelected2] = useState("");
+  const [rating, setRating] = useState(1);
+  const [hover, setHover] = useState(0);
+
 
   useEffect(() => {
     getMovie();
-  }, []);
+    console.log(rating);
+  }, [rating]);
 
   const getMovie = () => {
     axios
@@ -31,23 +35,23 @@ export default function Write() {
   };
   const displayData1 = () => {
     return movies.map((m) => {
-      if (m.isSeries==false){
-      return (
-        <option key={m._id} value={m.title}>
-          {m.title}
-        </option>
-      );
+      if (m.isSeries == false) {
+        return (
+          <option key={m._id} value={m.title}>
+            {m.title}
+          </option>
+        );
       }
     });
   };
   const displayData2 = () => {
     return movies.map((m) => {
-      if (m.isSeries==true){
-      return (
-        <option key={m._id} value={m.title}>
-          {m.title}
-        </option>
-      );
+      if (m.isSeries == true) {
+        return (
+          <option key={m._id} value={m.title}>
+            {m.title}
+          </option>
+        );
       }
     });
   };
@@ -59,7 +63,8 @@ export default function Write() {
       title,
       desc,
       movie,
-      serie
+      serie,
+      rating,
     };
     if (file) {
       const data = new FormData();
@@ -105,8 +110,8 @@ export default function Write() {
               style={{ display: "none" }}
               onChange={(e) => setFile(e.target.files[0])}
             />
-            </div>
-             <div className="writeFormGroup">
+          </div>
+          <div className="writeFormGroup">
             <input
               type="text"
               placeholder="Title"
@@ -115,8 +120,26 @@ export default function Write() {
               autoFocus={true}
               onChange={(e) => setTitle(e.target.value)}
             />
+          </div>
+          <div className="writeFormGroup">
+            <div className="star-rating">
+              {[...Array(5)].map((star, index) => {
+                index += 1;
+                return (
+                  <button
+                    type="button"
+                    key={index}
+                    className={index <= (hover || rating) ? "on" : "off"}
+                    onClick={() => setRating(index)}
+                    onMouseEnter={() => setHover(index)}
+                    onMouseLeave={() => setHover(rating)}
+                  >
+                    <span className="star">&#9733;</span>
+                  </button>
+                );
+              })}
             </div>
-          
+          </div>
           <div className="writeFormGroup">
             <select
               disabled={selected2}
@@ -124,23 +147,34 @@ export default function Write() {
               id="movie"
               className="writeInputMovie"
               autoFocus={true}
-              onChange={(e) =>{ setMovie(e.target.value); setSelected1("disabled")}}
+              onChange={(e) => {
+                setMovie(e.target.value);
+                setSelected1("disabled");
+              }}
             >
-              <option selected={true} disabled="disabled">Movie</option>
+              <option selected={true} disabled="disabled">
+                Movie
+              </option>
               {displayData1()}
             </select>
             <select
-                disabled={selected1}
+              disabled={selected1}
               name="serie"
               id="serie"
               className="writeInputMovie"
               autoFocus={true}
-              onChange={(e) => {setSerie(e.target.value); setSelected2("disabled")}}
+              onChange={(e) => {
+                setSerie(e.target.value);
+                setSelected2("disabled");
+              }}
             >
-              <option selected={true} disabled="disabled">Serie</option>
+              <option selected={true} disabled="disabled">
+                Serie
+              </option>
               {displayData2()}
             </select>
           </div>
+
           <div className="writeFormGroup">
             <textarea
               placeholder="Share Your Thoughts...."

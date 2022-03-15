@@ -28,7 +28,7 @@ export default function Blog() {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 600);
+    window.scrollTo(0, 720);
     const fetchPosts = async () => {
       const res = await axios.get("/posts" + search, {
         headers: {

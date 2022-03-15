@@ -9,14 +9,10 @@ export default function Listcard({ item }) {
   const { user, dispatch } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log("fetching movies...");
     getMovieDetails();
-    console.log("item: ", item);
-  }, [item]);
+   
+  }, [item,movie]);
 
-  useEffect(() => {
-    console.log("movie: ", movie);
-  }, [movie]);
 
   const handleRemove = async (e) => {
     e.preventDefault();

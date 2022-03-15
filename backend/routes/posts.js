@@ -17,6 +17,7 @@ router.post("/", verify, async (req, res) => {
 
 //UPDATE POST
 router.put("/:id", verify, async (req, res) => {
+  
   try {
     const post = await Post.findById(req.params.id);
     if (post.username === req.user.username) {
@@ -48,6 +49,7 @@ router.delete("/:id", verify, async (req, res) => {
       try {
         await post.delete();
         res.status(200).json("Post has been deleted...");
+       
       } catch (err) {
         res.status(500).json(err);
       }
