@@ -55,7 +55,7 @@ const Search = () => {
   };
 
   return (
-    <>
+    <div className="searchContainer">
       <form className="search">
         <input
           className="searchTxt"
@@ -80,7 +80,7 @@ const Search = () => {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 export default Search;

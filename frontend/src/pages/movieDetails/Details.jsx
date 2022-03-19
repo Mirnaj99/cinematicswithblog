@@ -71,7 +71,7 @@ export default function Details() {
 
     try {
       // setList({...mylist,[e.target.name]:movie._id}
-      const res = await axios.put(
+      let res = await axios.put(
         "/users/removelist/" + user._id,
         updatedList,
         {
@@ -81,6 +81,7 @@ export default function Details() {
           },
         }
       );
+      res.data.accessToken = JSON.parse(localStorage.getItem("user")).accessToken;
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
       window.scrollTo(0, 600);
     } catch (err) {

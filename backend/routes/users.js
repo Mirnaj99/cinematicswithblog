@@ -8,7 +8,12 @@ const verify = require("../verifyToken");
 router.put("/:id", verify, async (req, res) => {
   
   if (req.user.id === req.params.id) {
-
+    if (req.body.password) {
+      req.body.password = CryptoJS.AES.encrypt(
+        req.body.password,
+        process.env.SECRET_KEY
+      ).toString();
+    }
 
     try {
       const updatedUser = await User.findByIdAndUpdate(

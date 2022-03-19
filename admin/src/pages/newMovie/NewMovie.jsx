@@ -158,6 +158,24 @@ export default function NewMovie() {
             onChange={changeHandler}
           />
         </div>
+        <div className="addProductItem">
+          <label>IMDB</label>
+          <input
+            type="text"
+            placeholder="IMDB Link"
+            name="imdb"
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Rating</label>
+          <input
+            type="text"
+            placeholder="Rating"
+            name="rating"
+            onChange={changeHandler}
+          />
+        </div>
 
         <div className="addProductItem">
           <label>Is Series?</label>

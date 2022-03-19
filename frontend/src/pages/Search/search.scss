@@ -1,9 +1,14 @@
+.searchContainer{
+  background-color: var(--main-color);
+  height: 100vh;
+}
+
 .search {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: var(--main-color);
+
   font-family: "Roboto", sans-serif;
 }
 
@@ -40,7 +45,7 @@
   padding-left: 10px;
 }
 .message{
-  color: var(--main-color);
+  color: white;
 }
 .loader {
   border: 10px solid  var(--main-color);

@@ -23,7 +23,7 @@ export default function Listcard({ item }) {
     console.log("updatedList:", updatedList);
     try {
       //mish hayde lezem mylist mish user.id?
-      const res = await axios.put(
+      let res = await axios.put(
         "/users/removelist/" + user._id,
         updatedList,
         {
@@ -33,6 +33,8 @@ export default function Listcard({ item }) {
           },
         }
       );
+      res.data.accessToken = JSON.parse(localStorage.getItem("user")).accessToken;
+
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {
       dispatch({ type: "UPDATE_FAILURE" });
