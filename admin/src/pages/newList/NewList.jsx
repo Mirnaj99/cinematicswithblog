@@ -3,13 +3,12 @@ import "./newList.css";
 
 export default function NewList() {
   const location = useLocation();
-  const {list} = location.state;
+  const { list } = location.state;
 
   return (
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">List</h1>
-      
       </div>
       <div className="productTop">
         <div className="productTopRight">
@@ -29,25 +28,16 @@ export default function NewList() {
               <span className="productInfoKey">type:</span>
               <span className="productInfoValue">{list?.type}</span>
             </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">Content:</span>
+              <ul>
+                {list?.content.map((data) => {
+                  return <li className="productInfoValue">{data} </li>;
+                })}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="productBottom">
-        <form className="productForm">
-          <div className="productFormLeft">
-            <label>List Title</label>
-            <input type="text" placeholder={list?.title} />
-
-            <label>Genre</label>
-            <input type="text" placeholder={list?.genre} />
-
-            <label>Type</label>
-            <input type="text" placeholder={list?.type} />
-          </div>
-          <div className="productFormRight">
-            <button className="productButton button">Update</button>
-          </div>
-        </form>
       </div>
     </div>
   );

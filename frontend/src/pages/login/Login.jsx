@@ -28,6 +28,7 @@ const Login = () => {
 
     setEmail("");
     setPassword("");
+    
   };
 
   return (

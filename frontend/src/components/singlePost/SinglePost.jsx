@@ -25,8 +25,10 @@ export default function SinglePost() {
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
+
     };
     getPost();
+    
   }, [id]);
 
   const handleDelete = async () => {
@@ -83,7 +85,7 @@ export default function SinglePost() {
       <div className="singlePostWrapper">
       <h1 className="singlePostMovie">
 <Link to={`/blog/?${filter}=${filtertitle}`} className="link">
-  <b> {filtertitle}</b>
+  <b> {filtertitle} </b>  <b className="rate">({post.rating}  <i className="fa-solid fa-star starrate"></i>)</b>
 </Link>
 </h1>
         {post.photo && (

@@ -35,8 +35,10 @@
 }
 .sidebarImg {
   width: 83%;
-  object-fit: cover;
-  height: 250px;
+  object-fit: fill;
+  height: 50px;
+  margin-bottom: 15px;
+  scale: 0.95;
 }
 .sidebarList {
   list-style: none;
@@ -62,7 +64,7 @@
 }
 
 .sidebarIcon {
-  font-size: 16px;
+  font-size: 20px;
   margin-left: 15px;
   cursor: pointer;
 }

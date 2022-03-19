@@ -14,17 +14,7 @@ export default function Topbar() {
           <span className="logo">Cinematics Admin</span>
         </div>
         <div className="topRight">
-          <div className="topbarIconContainer">
-            <NotificationsNone />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Language />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Settings />
-          </div>
+         
           <div className="profile">
             <div className="options">
               <span onClick={() => dispatch(logout())}>Logout</span>

@@ -48,6 +48,7 @@ export default function Settings() {
           "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
+    res.data.accessToken = JSON.parse(localStorage.getItem("user")).accessToken;
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
       setSuccess(true);
 
@@ -64,6 +65,7 @@ export default function Settings() {
             "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
         },
       });
+     
       dispatch({ type: "LOGOUT" });
       
     } catch (err) {}

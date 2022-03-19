@@ -22,12 +22,14 @@ const PostSchema = new mongoose.Schema(
     },
     movie: {
       type: String,
-    
-    },
+      },
     serie: {
       type: String,
-     
     },
+    rating: {
+      type: Number,
+      default: "1"
+    }
 
   },
   { timestamps: true }

@@ -1,14 +1,16 @@
 import "./app.scss";
-import Home from "./pages/Home/Home";
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
-import Watch from "./pages/watch/Watch";
+import jwt_decode from "jwt-decode";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from "react-router-dom";
+import axios from "axios";
+import Home from "./pages/Home/Home";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import Watch from "./pages/watch/Watch";
 import { useContext } from "react";
 import { AuthContext } from "./authContext/AuthContext";
 import Blog from "./pages/BlogHome/Blog";
@@ -17,13 +19,12 @@ import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
 import Details from "./pages/movieDetails/Details";
 import Watchtrailer from "./pages/watchtrailer/Watchtrailer";
-
 import Mylist from "./pages/mylist/Mylist";
-
 import Search from "./pages/Search/Search";
 
 const App = () => {
   const { user } = useContext(AuthContext);
+
   return (
     <Router>
       <Routes>
@@ -48,7 +49,7 @@ const App = () => {
           path="/series"
           element={user ? <Home type="series" /> : <Login />}
         />
-        <Route path="/watch" element={user ? <Watchtrailer /> : <Login />} />
+        <Route path="/watch" element={user ? <Watch /> : <Login />} />
         <Route
           path="/watchtrailer"
           element={user ? <Watchtrailer /> : <Login />}
@@ -58,9 +59,7 @@ const App = () => {
           element={user ? <Details /> : <Login />}
         />
         <Route path="/mylist" element={user ? <Mylist /> : <Login />} />
-        <Route path="/search" element={user ? <Search /> : <Login />}  />
-
-      
+        <Route path="/search" element={user ? <Search /> : <Login />} />
       </Routes>
 
       <Routes>

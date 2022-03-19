@@ -43,3 +43,10 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
+.topinfo{
+  display: flex;
+  flex-direction: row;
+}
+.ratepost{
+ text-align: start;
+}

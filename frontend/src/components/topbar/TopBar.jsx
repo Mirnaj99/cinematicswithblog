@@ -22,11 +22,8 @@ export default function TopBar() {
           </li>
           </ul>
           </div>
-        <i className="topIcon fab fa-facebook-square"></i>
-        <i className="topIcon fab fa-instagram-square"></i>
-        <i className="topIcon fab fa-pinterest-square"></i>
-        <i className="topIcon fab fa-twitter-square"></i>
-      </div>
+      
+      </div> 
       <div className="topCenter">
         <ul className="topList">
           

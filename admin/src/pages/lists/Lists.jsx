@@ -33,7 +33,7 @@ export default function List() {
             <Link
               to= {`/list/${params.row._id}`} state = {{list: params.row}}
             >
-              <button className="productListEdit buttonEdit">Edit</button>
+              <button className="productListEdit buttonEdit">View</button>
             </Link>
             <DeleteOutline
               className="productListDelete"
